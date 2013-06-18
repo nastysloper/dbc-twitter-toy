@@ -1,0 +1,7 @@
+<h2>Some tweets by <%= @tweeter %>:</h2>
+
+<ul class="tweets">
+  <% @tweets_array.each do |tweet| %>
+    <li><%= tweet %></li>
+  <% end %>
+</ul>
