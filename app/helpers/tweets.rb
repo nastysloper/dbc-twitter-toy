@@ -1,8 +1,13 @@
-def fresh_tweets(username)
-  tweets_json = Twitter.user_timeline(username)
+def fresh_tweets(user)
+  tweets_json = Twitter.user_timeline(user.username)
   @tweets_array = []
   tweets_json.each do |twitter_data|
-    @tweets_array << twitter_data[:text]
+    tweet_args = {}
+    tweet_args[:date_posted] = twitter_data.attrs[:created_at]
+    tweet_args[:tweet] = twitter_data.attrs[:text]
+    tweet_args[:twitter_user] = user
+    tweet_args[:twitter_identifier] = twitter_data.attrs[:id_str]
+    @tweets_array << Tweet.create(tweet_args)
   end
   @tweets_array
 end

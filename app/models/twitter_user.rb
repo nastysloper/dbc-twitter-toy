@@ -8,6 +8,6 @@ class TwitterUser < ActiveRecord::Base
   private
     def cache_age(user)
       cache_age = (Time.now - user.tweets_last_pulled)/60
-      return cache_age > 1
+      return cache_age > 15
     end
 end
