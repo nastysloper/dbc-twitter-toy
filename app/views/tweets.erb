@@ -1,7 +1,7 @@
-<h2>Some tweets by <%= @tweeter %>:</h2>
+<h2>Some tweets by <%= @user.username %>:</h2>
 
 <ul class="tweets">
-  <% @tweets_array.each do |tweet| %>
-    <li><%= tweet %></li>
+  <% @tweets.each do |tweet| %>
+    <li><%= tweet.tweet %></li>
   <% end %>
 </ul>
