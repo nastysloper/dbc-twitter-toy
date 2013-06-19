@@ -7,7 +7,7 @@ get '/tweets' do
 end
 
 get '/:username' do |username|
-  @tweets = recent_tweets(username)
+  @tweets = fresh_tweets(username)
   @tweeter = username
   erb :tweets
 end
