@@ -9,12 +9,9 @@ end
 get '/:username' do |username|
   @user = TwitterUser.find_or_create_by_username(username)
   if @user.tweets_stale?
-    begin
-      fresh_tweets(@user) 
-    rescue
-      @error = "Whoops! That user doesn't exist or their tweets are protected."
-    end
+    refresh_tweets(@user)
     @user.tweets_last_pulled = Time.now
+    @user.save
   end
 
   @tweets = @user.tweets.limit(10)

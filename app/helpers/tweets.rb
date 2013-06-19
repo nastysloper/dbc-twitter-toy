@@ -11,3 +11,11 @@ def fresh_tweets(user)
   end
   @tweets_array
 end
+
+def refresh_tweets(user)
+  begin
+    fresh_tweets(user) 
+  rescue
+    @error = "Whoops! That user doesn't exist or their tweets are protected."
+  end
+end
